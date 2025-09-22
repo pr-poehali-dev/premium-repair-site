@@ -43,17 +43,12 @@ export default function Index() {
                 Услуги
               </button>
               <button 
-                onClick={() => scrollToSection('portfolio')}
+                onClick={() => scrollToSection('advantages')}
                 className="text-foreground hover:text-primary transition-colors"
               >
-                Портфолио
+                Преимущества
               </button>
-              <button 
-                onClick={() => scrollToSection('about')}
-                className="text-foreground hover:text-primary transition-colors"
-              >
-                О нас
-              </button>
+
               <button 
                 onClick={() => scrollToSection('contact')}
                 className="text-foreground hover:text-primary transition-colors"
@@ -147,52 +142,8 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Портфолио */}
-      <section id="portfolio" className="py-20 px-4">
-        <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center text-foreground mb-12">Портфолио</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="bg-card overflow-hidden hover:shadow-lg transition-shadow">
-              <img 
-                src="/img/73dc8a8d-c72a-4c74-87c1-c7cb810a7ff1.jpg" 
-                alt="Элегантная гостиная премиум класса"
-                className="h-48 w-full object-cover"
-              />
-              <CardContent className="p-4">
-                <h3 className="font-semibold text-card-foreground">Гостиная премиум</h3>
-                <p className="text-sm text-muted-foreground mt-1">Элегантный ремонт с теплыми тонами</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-card overflow-hidden hover:shadow-lg transition-shadow">
-              <img 
-                src="/img/dd09d756-a7a3-475a-89b0-a470ae765484.jpg" 
-                alt="Современная кухня"
-                className="h-48 w-full object-cover"
-              />
-              <CardContent className="p-4">
-                <h3 className="font-semibold text-card-foreground">Современная кухня</h3>
-                <p className="text-sm text-muted-foreground mt-1">Функциональный дизайн с премиум материалами</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-card overflow-hidden hover:shadow-lg transition-shadow">
-              <img 
-                src="/img/e21e506f-0da3-4d4f-99fd-78c409324497.jpg" 
-                alt="Роскошная ванная комната"
-                className="h-48 w-full object-cover"
-              />
-              <CardContent className="p-4">
-                <h3 className="font-semibold text-card-foreground">Роскошная ванная</h3>
-                <p className="text-sm text-muted-foreground mt-1">Спа-дизайн с натуральными материалами</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Почему выбирают нас */}
-      <section id="about" className="py-20 px-4 bg-muted">
+      {/* Преимущества */}
+      <section id="advantages" className="py-20 px-4 bg-muted">
         <div className="container mx-auto">
           <h2 className="text-4xl font-bold text-center text-foreground mb-12">Почему выбирают нас?</h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -208,7 +159,7 @@ export default function Index() {
 
             <div className="text-center">
               <div className="text-primary mb-4 flex justify-center">
-                <Icon name="Shield" size={64} />
+                <Icon name="Settings" size={64} />
               </div>
               <h3 className="text-xl font-semibold mb-3 text-foreground">Полный сервис</h3>
               <p className="text-muted-foreground">
@@ -218,7 +169,7 @@ export default function Index() {
 
             <div className="text-center">
               <div className="text-primary mb-4 flex justify-center">
-                <Icon name="Clock" size={64} />
+                <Icon name="Shield" size={64} />
               </div>
               <h3 className="text-xl font-semibold mb-3 text-foreground">Опыт и надежность</h3>
               <p className="text-muted-foreground">
@@ -321,10 +272,10 @@ export default function Index() {
               Услуги
             </button>
             <button 
-              onClick={() => scrollToSection('about')}
+              onClick={() => scrollToSection('advantages')}
               className="text-muted-foreground hover:text-primary transition-colors"
             >
-              О нас
+              Преимущества
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
