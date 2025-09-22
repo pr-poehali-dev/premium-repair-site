@@ -1,77 +1,69 @@
-import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
+import { useState } from 'react';
 
-const Index = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    message: ''
-  });
+export default function Index() {
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Заявка отправлена:', formData);
-    alert('Спасибо! Мы свяжемся с вами в ближайшее время.');
-    setFormData({ name: '', phone: '', message: '' });
+    alert(`Спасибо за заявку, ${name}! Мы свяжемся с вами по номеру ${phone}`);
+    setName('');
+    setPhone('');
+    setMessage('');
   };
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    element?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <div className="min-h-screen bg-background">
       {/* Навигация */}
-      <nav className="bg-card shadow-sm sticky top-0 z-50">
+      <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             <div className="text-2xl font-bold text-primary">Group Repair</div>
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden md:flex space-x-6">
               <button 
-                onClick={() => scrollToSection('home')} 
+                onClick={() => scrollToSection('home')}
                 className="text-foreground hover:text-primary transition-colors"
               >
                 Главная
               </button>
               <button 
-                onClick={() => scrollToSection('services')} 
+                onClick={() => scrollToSection('services')}
                 className="text-foreground hover:text-primary transition-colors"
               >
                 Услуги
               </button>
               <button 
-                onClick={() => scrollToSection('portfolio')} 
+                onClick={() => scrollToSection('portfolio')}
                 className="text-foreground hover:text-primary transition-colors"
               >
                 Портфолио
               </button>
               <button 
-                onClick={() => scrollToSection('about')} 
+                onClick={() => scrollToSection('about')}
                 className="text-foreground hover:text-primary transition-colors"
               >
-                О компании
+                О нас
               </button>
               <button 
-                onClick={() => scrollToSection('advantages')} 
-                className="text-foreground hover:text-primary transition-colors"
-              >
-                Преимущества
-              </button>
-              <button 
-                onClick={() => scrollToSection('contacts')} 
+                onClick={() => scrollToSection('contact')}
                 className="text-foreground hover:text-primary transition-colors"
               >
                 Контакты
               </button>
             </div>
             <Button 
-              onClick={() => scrollToSection('contacts')}
-              className="bg-primary text-primary-foreground hover:bg-primary/90"
+              onClick={() => scrollToSection('contact')}
+              className="bg-primary hover:bg-primary/90 text-primary-foreground"
             >
               Оставить заявку
             </Button>
@@ -80,12 +72,12 @@ const Index = () => {
       </nav>
 
       {/* Главная секция */}
-      <section id="home" className="py-20 px-4">
+      <section id="home" className="pt-20 pb-16 px-4">
         <div className="container mx-auto text-center">
-          <h1 className="text-5xl font-bold text-foreground mb-6">
-            Добро пожаловать в Group Repair!
+          <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
+            Добро пожаловать в <span className="text-primary">Group Repair</span>!
           </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
             Мы — ваша надежная команда профессионалов с 10-летним опытом в сфере ремонтов под ключ премиум качества. 
             Наша цель — сделать ваш дом идеальным, а процесс ремонта — комфортным и беззаботным.
           </p>
@@ -93,17 +85,16 @@ const Index = () => {
             <Button 
               size="lg" 
               onClick={() => scrollToSection('services')}
-              className="bg-primary text-primary-foreground hover:bg-primary/90"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3"
             >
-              <Icon name="Home" className="mr-2" size={20} />
               Наши услуги
             </Button>
             <Button 
               size="lg" 
               variant="outline" 
-              onClick={() => scrollToSection('contacts')}
+              onClick={() => scrollToSection('contact')}
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-3"
             >
-              <Icon name="Phone" className="mr-2" size={20} />
               Получить консультацию
             </Button>
           </div>
@@ -163,8 +154,8 @@ const Index = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card className="bg-card overflow-hidden hover:shadow-lg transition-shadow">
               <img 
-                src="/img/e364b57b-959b-4292-865a-b22dbe0fd865.jpg" 
-                alt="Ремонт гостиной премиум класса"
+                src="/img/73dc8a8d-c72a-4c74-87c1-c7cb810a7ff1.jpg" 
+                alt="Элегантная гостиная премиум класса"
                 className="h-48 w-full object-cover"
               />
               <CardContent className="p-4">
@@ -175,7 +166,7 @@ const Index = () => {
 
             <Card className="bg-card overflow-hidden hover:shadow-lg transition-shadow">
               <img 
-                src="/img/fabbf593-f30c-4ee7-914b-dcc21f765981.jpg" 
+                src="/img/dd09d756-a7a3-475a-89b0-a470ae765484.jpg" 
                 alt="Современная кухня"
                 className="h-48 w-full object-cover"
               />
@@ -187,7 +178,7 @@ const Index = () => {
 
             <Card className="bg-card overflow-hidden hover:shadow-lg transition-shadow">
               <img 
-                src="/img/f9eb9d2a-d018-40ae-ae13-332a472ebd01.jpg" 
+                src="/img/e21e506f-0da3-4d4f-99fd-78c409324497.jpg" 
                 alt="Роскошная ванная комната"
                 className="h-48 w-full object-cover"
               />
@@ -196,155 +187,111 @@ const Index = () => {
                 <p className="text-sm text-muted-foreground mt-1">Спа-дизайн с натуральными материалами</p>
               </CardContent>
             </Card>
-
-            {[4, 5, 6].map((item) => (
-              <Card key={item} className="bg-card overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 bg-muted flex items-center justify-center">
-                  <Icon name="Image" size={48} className="text-muted-foreground" />
-                </div>
-                <CardContent className="p-4">
-                  <h3 className="font-semibold text-card-foreground">Проект {item}</h3>
-                  <p className="text-sm text-muted-foreground mt-1">Ремонт квартиры премиум класса</p>
-                </CardContent>
-              </Card>
-            ))}
           </div>
         </div>
       </section>
 
-      {/* О компании */}
+      {/* Почему выбирают нас */}
       <section id="about" className="py-20 px-4 bg-muted">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold text-foreground mb-6">О компании</h2>
-              <p className="text-lg text-muted-foreground mb-6">
-                Group Repair — это команда профессионалов с 10-летним опытом в сфере ремонтов. 
-                Мы специализируемся на ремонтах под ключ премиум качества и гордимся каждым завершенным проектом.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-center">
-                  <Icon name="CheckCircle" className="text-primary mr-3" size={20} />
-                  <span className="text-foreground">10 лет успешной работы</span>
-                </div>
-                <div className="flex items-center">
-                  <Icon name="CheckCircle" className="text-primary mr-3" size={20} />
-                  <span className="text-foreground">Более 500 завершенных проектов</span>
-                </div>
-                <div className="flex items-center">
-                  <Icon name="CheckCircle" className="text-primary mr-3" size={20} />
-                  <span className="text-foreground">Команда сертифицированных специалистов</span>
-                </div>
-              </div>
-            </div>
-            <div className="bg-card p-8 rounded-lg">
-              <div className="h-64 bg-muted rounded-lg flex items-center justify-center">
-                <Icon name="Users" size={64} className="text-muted-foreground" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Преимущества */}
-      <section id="advantages" className="py-20 px-4">
         <div className="container mx-auto">
           <h2 className="text-4xl font-bold text-center text-foreground mb-12">Почему выбирают нас?</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="bg-card text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <div className="text-primary mb-4">
-                  <Icon name="Star" size={48} />
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-card-foreground">Премиум качество</h3>
-                <p className="text-muted-foreground">
-                  Мы используем только лучшие материалы и современные технологии для достижения идеального результата.
-                </p>
-              </CardContent>
-            </Card>
+            <div className="text-center">
+              <div className="text-primary mb-4 flex justify-center">
+                <Icon name="Award" size={64} />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-foreground">Премиум качество</h3>
+              <p className="text-muted-foreground">
+                Мы используем только лучшие материалы и современные технологии.
+              </p>
+            </div>
 
-            <Card className="bg-card text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <div className="text-primary mb-4">
-                  <Icon name="Shield" size={48} />
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-card-foreground">Полный сервис</h3>
-                <p className="text-muted-foreground">
-                  Мы заботимся о каждом этапе, чтобы вы могли расслабиться и довериться нам полностью.
-                </p>
-              </CardContent>
-            </Card>
+            <div className="text-center">
+              <div className="text-primary mb-4 flex justify-center">
+                <Icon name="Shield" size={64} />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-foreground">Полный сервис</h3>
+              <p className="text-muted-foreground">
+                Мы заботимся о каждом этапе, чтобы вы могли расслабиться и довериться нам.
+              </p>
+            </div>
 
-            <Card className="bg-card text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <div className="text-primary mb-4">
-                  <Icon name="Award" size={48} />
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-card-foreground">Опыт и надежность</h3>
-                <p className="text-muted-foreground">
-                  10 лет на рынке — это гарантия нашего профессионализма и качества выполненных работ.
-                </p>
-              </CardContent>
-            </Card>
+            <div className="text-center">
+              <div className="text-primary mb-4 flex justify-center">
+                <Icon name="Clock" size={64} />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-foreground">Опыт и надежность</h3>
+              <p className="text-muted-foreground">
+                10 лет на рынке — это гарантия нашего профессионализма.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Форма заявки */}
-      <section id="contacts" className="py-20 px-4 bg-muted">
+      <section id="contact" className="py-20 px-4">
         <div className="container mx-auto max-w-2xl">
-          <h2 className="text-4xl font-bold text-center text-foreground mb-6">Оставьте заявку!</h2>
-          <p className="text-center text-muted-foreground mb-8">
-            Хотите узнать больше или обсудить свой проект? Оставьте заявку, и наш менеджер свяжется с вами в ближайшее время!
-          </p>
-          
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-foreground mb-4">Оставьте заявку!</h2>
+            <p className="text-lg text-muted-foreground">
+              Хотите узнать больше или обсудить свой проект? Оставьте заявку по номеру телефона, 
+              и наш менеджер свяжется с вами в ближайшее время!
+            </p>
+          </div>
+
           <Card className="bg-card">
-            <CardContent className="p-6">
-              <form onSubmit={handleSubmit} className="space-y-4">
+            <CardContent className="p-8">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="block text-sm font-medium text-card-foreground mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-card-foreground mb-2">
                     Ваше имя
                   </label>
                   <Input
+                    id="name"
                     type="text"
-                    required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     placeholder="Введите ваше имя"
+                    required
+                    className="w-full"
                   />
                 </div>
-                
+
                 <div>
-                  <label className="block text-sm font-medium text-card-foreground mb-2">
+                  <label htmlFor="phone" className="block text-sm font-medium text-card-foreground mb-2">
                     Номер телефона
                   </label>
                   <Input
+                    id="phone"
                     type="tel"
-                    required
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
                     placeholder="+7 (999) 123-45-67"
+                    required
+                    className="w-full"
                   />
                 </div>
-                
+
                 <div>
-                  <label className="block text-sm font-medium text-card-foreground mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-card-foreground mb-2">
                     Сообщение (необязательно)
                   </label>
                   <Textarea
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Опишите ваш проект или задайте вопрос"
+                    id="message"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="Расскажите о вашем проекте..."
                     rows={4}
+                    className="w-full"
                   />
                 </div>
-                
+
                 <Button 
                   type="submit" 
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
                   size="lg"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
                 >
-                  <Icon name="Send" className="mr-2" size={20} />
                   Отправить заявку
                 </Button>
               </form>
@@ -353,27 +300,44 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Подвал */}
-      <footer className="bg-primary text-primary-foreground py-8 px-4">
+      {/* Футер */}
+      <footer className="bg-card border-t border-border py-12 px-4">
         <div className="container mx-auto text-center">
-          <div className="text-2xl font-bold mb-4">Group Repair</div>
-          <p className="text-primary-foreground/80 mb-4">
-            Профессиональный ремонт под ключ с 10-летним опытом
+          <div className="text-2xl font-bold text-primary mb-4">Group Repair</div>
+          <p className="text-muted-foreground mb-6">
+            Профессиональные ремонты премиум качества с 10-летним опытом
           </p>
           <div className="flex justify-center space-x-6">
-            <div className="flex items-center">
-              <Icon name="Phone" className="mr-2" size={16} />
-              <span>+7 (999) 123-45-67</span>
-            </div>
-            <div className="flex items-center">
-              <Icon name="Mail" className="mr-2" size={16} />
-              <span>info@grouprepair.ru</span>
-            </div>
+            <button 
+              onClick={() => scrollToSection('home')}
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              Главная
+            </button>
+            <button 
+              onClick={() => scrollToSection('services')}
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              Услуги
+            </button>
+            <button 
+              onClick={() => scrollToSection('about')}
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              О нас
+            </button>
+            <button 
+              onClick={() => scrollToSection('contact')}
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              Контакты
+            </button>
+          </div>
+          <div className="mt-8 pt-8 border-t border-border text-sm text-muted-foreground">
+            © 2024 Group Repair. Все права защищены.
           </div>
         </div>
       </footer>
     </div>
   );
-};
-
-export default Index;
+}
